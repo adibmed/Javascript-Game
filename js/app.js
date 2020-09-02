@@ -76,3 +76,15 @@ function freeze() {
     undraw();
     con
 }
+
+ //move left and prevent collisions with shapes moving left
+ function moveright() {
+    undraw()
+    const isAtRightEdge = current.some(index => (currentPosition + index) % width === width - 1)
+    if (!isAtRightEdge) currentPosition += 1
+    if (current.some(index => squares[currentPosition + index].classList.contains('block2'))) {
+      currentPosition -= 1
+    }
+    draw()
+  }
+
