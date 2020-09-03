@@ -107,19 +107,16 @@
     background-image: url(/Users/limit/development/Tetris/images/blue_block.png);
   }
   
-  .display {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  .display { 
     align-items: center;
     text-align: center;
     margin-top: 1rem;
-    width: 17.5rem;
+    width: 100%;
     height: 25rem;
-    background: #f0f0f0;  
+    background: #3d07ff;  
     color: red;
-    position: absolute;
-    top: 60%;
+    position: absolute;  
+    bottom: 0;
     left: 0;
   }
   
