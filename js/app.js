@@ -2,7 +2,25 @@ const grid = document.querySelector('.grid');
 let squares = Array.from(grid.querySelector('div'));
 const width = 10;
 const height = 10;
-let currentPosition  = 4;
+let currentPosition = 4;
+
+
+
+//assign functions to keycodes
+function control(e) {
+    if (e.keyCode === 39)
+        moveright()
+    else if (e.keyCode === 38)
+        rotate()
+    else if (e.keyCode === 37)
+        moveleft()
+    else if (e.keyCode === 40)
+        moveDown()
+}
+
+
+
+
 
 //The Tetrominoes
 const lTetromino = [
@@ -77,36 +95,36 @@ function freeze() {
     con
 }
 
- //move left and prevent collisions with shapes moving left
- function moveright() {
+//move left and prevent collisions with shapes moving left
+function moveright() {
     undraw()
     const isAtRightEdge = current.some(index => (currentPosition + index) % width === width - 1)
     if (!isAtRightEdge) currentPosition += 1
     if (current.some(index => squares[currentPosition + index].classList.contains('block2'))) {
-      currentPosition -= 1
+        currentPosition -= 1
     }
     draw()
-  }
+}
 
-  //move right and prevent collisions with shapes moving right
-  function moveleft() {
+//move right and prevent collisions with shapes moving right
+function moveleft() {
     undraw()
     const isAtLeftEdge = current.some(index => (currentPosition + index) % width === 0)
     if (!isAtLeftEdge) currentPosition -= 1
     if (current.some(index => squares[currentPosition + index].classList.contains('block2'))) {
-      currentPosition += 1
+        currentPosition += 1
     }
     draw()
-  }
+}
 
 
-    //Rotate the Tetromino
-    function rotate() {
-        undraw()
-        currentRotation++
-        if (currentRotation === current.length) {
-          currentRotation = 0
-        }
-        current = theTetrominoes[random][currentRotation]
-        draw()
-      }
+//Rotate the Tetromino
+function rotate() {
+    undraw()
+    currentRotation++
+    if (currentRotation === current.length) {
+        currentRotation = 0
+    }
+    current = theTetrominoes[random][currentRotation]
+    draw()
+}
